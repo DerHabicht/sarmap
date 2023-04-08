@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ag7if.net/schemas/capgrid",
+  "$defs": {
+    "coord": {
+      "type": "string",
+      "pattern": "^\\d{2,3}-\\d{2}[NSEW]"
+    }
+  },
+  "type": "object",
+  "properties": {
+    "patternProperties": {
+      "^[a-z]{3}$": {
+        "type": "object",
+        "properties": {
+          "identifier": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}$"
+          },
+          "name": { "type": "string" },
+          "total_grids": { "type": "integer" },
+          "grid_limits": {
+            "type": "object",
+            "properties": {
+              "north": { "$ref": "#/$defs/coord" },
+              "south": { "$ref": "#/$defs/coord" },
+              "east": { "$ref": "#/$defs/coord" },
+              "west": { "$ref": "#/$defs/coord" }
+            }
+          }
+        }
+      }
+    }
+  }
+}
